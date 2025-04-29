@@ -25,15 +25,15 @@ const LandingPage: React.FC = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
-          <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-bread-beige text-chocolate-brown shadow-sm">
+          <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-bold bg-amber-100 text-amber-900 shadow-md">
             <Coffee className="mr-2 h-4 w-4" />
             Breakfast
           </span>
-          <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-avocado-green text-gray-900 shadow-sm font-semibold">
+          <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-bold bg-green-100 text-green-900 shadow-md dark:bg-green-200">
             <Utensils className="mr-2 h-4 w-4" />
             Lunch
           </span>
-          <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-tomato-red text-white shadow-sm">
+          <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-bold bg-red-100 text-red-900 shadow-md dark:bg-red-200">
             <MoonStar className="mr-2 h-4 w-4" />
             Dinner
           </span>

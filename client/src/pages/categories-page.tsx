@@ -23,7 +23,11 @@ const CategoryCard: React.FC<{
       whileHover={{ scale: 1.03 }}
     >
       <Link href={`/meals/${category}`}>
-        <Card className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition-all duration-300 h-full border-t-4 border-t-tomato-red">
+        <Card className={`bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition-all duration-300 h-full border-t-4 ${
+          category === 'breakfast' ? 'border-t-amber-500' : 
+          category === 'lunch' ? 'border-t-green-500' : 
+          'border-t-red-500'
+        }`}>
           <div className={`h-52 flex items-center justify-center ${bgColor} relative overflow-hidden`}>
             <div className="absolute inset-0 bg-gradient-to-br from-transparent to-black/30"></div>
             
@@ -49,7 +53,11 @@ const CategoryCard: React.FC<{
           <CardContent className="p-6">
             <h3 className={`text-3xl font-bold mb-3 ${textColor} font-poppins tracking-tight`}>{title}</h3>
             <p className="text-gray-600 dark:text-gray-300 mb-4">{description}</p>
-            <div className="flex items-center text-tomato-red font-medium">
+            <div className={`flex items-center font-medium ${
+              category === 'breakfast' ? 'text-amber-600 dark:text-amber-400' : 
+              category === 'lunch' ? 'text-green-600 dark:text-green-400' : 
+              'text-red-600 dark:text-red-400'
+            }`}>
               <span>View meals</span>
               <ArrowRight className="ml-2 h-4 w-4" />
             </div>
@@ -65,27 +73,27 @@ const CategoriesPage: React.FC = () => {
     {
       title: "Breakfast",
       description: "Start your day right with nutritious and delicious breakfast options.",
-      icon: <Coffee className="h-28 w-28 text-white drop-shadow-xl bg-bread-beige/60 p-6 rounded-full" />,
-      bgColor: "bg-bread-beige",
-      textColor: "text-chocolate-brown",
+      icon: <Coffee className="h-28 w-28 text-white drop-shadow-xl bg-amber-500/70 p-6 rounded-full" />,
+      bgColor: "bg-amber-100",
+      textColor: "text-amber-900 dark:text-amber-100",
       category: "breakfast",
       mealCount: 18,
     },
     {
       title: "Lunch",
       description: "Perfect midday meals to keep you energized throughout the day.",
-      icon: <UtensilsCrossed className="h-28 w-28 text-white drop-shadow-xl bg-avocado-green/60 p-6 rounded-full" />,
-      bgColor: "bg-avocado-green",
-      textColor: "text-gray-900 dark:text-avocado-green",
+      icon: <UtensilsCrossed className="h-28 w-28 text-white drop-shadow-xl bg-green-500/70 p-6 rounded-full" />,
+      bgColor: "bg-green-100",
+      textColor: "text-green-900 dark:text-green-100",
       category: "lunch",
       mealCount: 15,
     },
     {
       title: "Dinner",
       description: "End your day with satisfying and flavorful dinner recipes.",
-      icon: <ChefHat className="h-28 w-28 text-white drop-shadow-xl bg-tomato-red/60 p-6 rounded-full" />,
-      bgColor: "bg-tomato-red",
-      textColor: "text-gray-900 dark:text-tomato-red",
+      icon: <ChefHat className="h-28 w-28 text-white drop-shadow-xl bg-red-500/70 p-6 rounded-full" />,
+      bgColor: "bg-red-100",
+      textColor: "text-red-900 dark:text-red-100",
       category: "dinner",
       mealCount: 12,
     },

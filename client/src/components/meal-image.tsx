@@ -8,14 +8,48 @@ type MealImageProps = {
 
 // This component displays real food images based on the meal name
 const MealImage: React.FC<MealImageProps> = ({ mealName, category = "meal", className = "" }) => {
-  // Simplified function to convert meal name to an image URL-friendly format
+  // Function to get a specific, consistent image for each meal
   const getMealImageUrl = (name: string, cat: string): string => {
     // Convert to lowercase and replace spaces with hyphens
     const formattedName = name.toLowerCase().replace(/\s+/g, '-');
     
-    // Use Unsplash API to get consistent, high-quality food images
-    // We'll use the search feature with the meal name and category
-    return `https://source.unsplash.com/featured/?${formattedName},${cat},food`;
+    // For more specific, consistent and higher quality images
+    // Adding more specific keywords for food searches
+    const specificFoodTerms = {
+      // Breakfast items
+      "avocado toast": "avocado-toast-healthy-breakfast",
+      "french toast": "french-toast-maple-syrup",
+      "pancakes": "pancakes-maple-syrup-breakfast",
+      "omelette": "cheese-mushroom-omelette",
+      "smoothie bowl": "acai-smoothie-bowl-berries",
+      "breakfast burrito": "breakfast-burrito-eggs-bacon",
+      
+      // Lunch items
+      "caesar salad": "caesar-salad-chicken-parmesan",
+      "quinoa salad": "quinoa-vegetable-salad-healthy",
+      "sandwich": "turkey-avocado-sandwich-lunch",
+      "sushi": "salmon-avocado-sushi-rolls",
+      "pasta salad": "italian-pasta-salad-vegetables",
+      "soup": "vegetable-soup-homemade",
+      
+      // Dinner items
+      "salmon": "grilled-salmon-asparagus-lemon",
+      "steak": "medium-rare-steak-rosemary",
+      "chicken curry": "indian-chicken-curry-spicy",
+      "pasta": "italian-pasta-tomato-sauce",
+      "pizza": "homemade-margherita-pizza",
+      "burger": "gourmet-beef-burger-fries"
+    };
+    
+    // Loop through our specific keywords and check if any match our meal name
+    for (const [foodKey, searchTerm] of Object.entries(specificFoodTerms)) {
+      if (name.toLowerCase().includes(foodKey)) {
+        return `https://source.unsplash.com/featured/?${searchTerm}`;
+      }
+    }
+    
+    // Default search if no specific keywords match
+    return `https://source.unsplash.com/featured/?${formattedName},${cat},food,recipe,meal`;
   };
 
   // Generate a consistent fallback color based on the meal name (for loading/error states)
