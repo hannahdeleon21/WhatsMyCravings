@@ -35,7 +35,7 @@ const MealsPage: React.FC<MealsPageProps> = ({ category, openMealModal }) => {
       case 'lunch':
         return <UtensilsCrossed className="h-6 w-6 text-avocado-green mr-2" />;
       case 'dinner':
-        return <ChefHat className="h-6 w-6 text-tomato-red mr-2" />;
+        return <ChefHat className="h-6 w-6 text-red-600 dark:text-red-500 mr-2" />;
       default:
         return null;
     }
@@ -214,7 +214,7 @@ const MealsPage: React.FC<MealsPageProps> = ({ category, openMealModal }) => {
                 <Button
                   variant="default"
                   onClick={loadMoreMeals}
-                  className="px-6 py-3 bg-tomato-red hover:bg-tomato-red/90 rounded-full text-white shadow-md"
+                  className="px-6 py-3 bg-red-600 hover:bg-red-700 rounded-full text-white font-semibold shadow-lg"
                 >
                   Load More
                 </Button>

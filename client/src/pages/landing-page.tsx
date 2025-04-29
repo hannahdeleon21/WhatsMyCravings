@@ -7,11 +7,11 @@ import { ChevronRight, Utensils, Coffee, MoonStar } from "lucide-react";
 const LandingPage: React.FC = () => {
   return (
     <section className="min-h-screen flex flex-col justify-center items-center p-4 text-center relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-avocado-green/10 to-bread-beige/20 dark:from-tomato-red/10 dark:to-chocolate-brown/30 z-0"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-avocado-green/10 to-bread-beige/20 dark:from-red-600/10 dark:to-gray-800/30 z-0"></div>
       
       <div className="relative z-10 max-w-3xl mx-auto stagger-children">
         <motion.h1 
-          className="text-4xl md:text-6xl font-bold mb-4 text-tomato-red font-poppins"
+          className="text-4xl md:text-6xl font-bold mb-4 text-red-600 dark:text-red-500 font-poppins"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -57,7 +57,7 @@ const LandingPage: React.FC = () => {
           <Link href="/categories">
             <Button 
               size="lg" 
-              className="px-8 py-7 bg-gradient-to-r from-avocado-green to-tomato-red rounded-full text-lg font-semibold transform hover:scale-105 transition-all shadow-lg h-auto text-white group"
+              className="px-8 py-7 bg-gradient-to-r from-green-600 to-red-600 rounded-full text-lg font-semibold transform hover:scale-105 transition-all shadow-lg h-auto text-white group"
             >
               Get Started
               <ChevronRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
@@ -68,7 +68,7 @@ const LandingPage: React.FC = () => {
             <Button 
               variant="outline"
               size="lg"
-              className="px-6 py-6 rounded-full border-2 border-avocado-green text-avocado-green hover:bg-avocado-green/10 dark:text-avocado-green dark:hover:bg-avocado-green/20 text-lg"
+              className="px-6 py-6 rounded-full border-2 border-green-600 text-green-700 dark:text-green-500 hover:bg-green-50 dark:hover:bg-green-900/20 text-lg"
             >
               Browse Meals
             </Button>

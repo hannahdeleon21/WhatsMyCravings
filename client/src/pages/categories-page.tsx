@@ -31,10 +31,10 @@ const CategoryCard: React.FC<{
           <div className={`h-52 flex items-center justify-center ${bgColor} relative overflow-hidden`}>
             <div className="absolute inset-0 bg-gradient-to-br from-transparent to-black/30"></div>
             
-            {/* Real food images */}
-            <div className="absolute inset-0 w-full h-full opacity-80">
+            {/* Real food images from the attached assets */}
+            <div className="absolute inset-0 w-full h-full">
               <img 
-                src={`https://source.unsplash.com/featured/?${category},food`}
+                src={`/${category}.jpg`}
                 alt={title}
                 className="w-full h-full object-cover"
               />
@@ -53,13 +53,12 @@ const CategoryCard: React.FC<{
           <CardContent className="p-6">
             <h3 className={`text-3xl font-bold mb-3 ${textColor} font-poppins tracking-tight`}>{title}</h3>
             <p className="text-gray-600 dark:text-gray-300 mb-4">{description}</p>
-            <div className={`flex items-center font-medium ${
+            <div className={`flex justify-end items-center ${
               category === 'breakfast' ? 'text-amber-600 dark:text-amber-400' : 
               category === 'lunch' ? 'text-green-600 dark:text-green-400' : 
               'text-red-600 dark:text-red-400'
             }`}>
-              <span>View meals</span>
-              <ArrowRight className="ml-2 h-4 w-4" />
+              <ArrowRight className="h-5 w-5" />
             </div>
           </CardContent>
         </Card>
@@ -104,7 +103,7 @@ const CategoriesPage: React.FC = () => {
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-16">
           <motion.span 
-            className="inline-block text-tomato-red text-sm font-medium tracking-wider uppercase mb-2"
+            className="inline-block text-red-600 dark:text-red-500 text-sm font-medium tracking-wider uppercase mb-2"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
@@ -122,7 +121,7 @@ const CategoriesPage: React.FC = () => {
           </motion.h2>
           
           <motion.div 
-            className="w-24 h-1 bg-tomato-red mx-auto mt-4 rounded-full"
+            className="w-24 h-1 bg-red-600 dark:bg-red-500 mx-auto mt-4 rounded-full"
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
