@@ -1,0 +1,120 @@
+Create a modern, fully responsive website titled "What's for Lunch".
+
+Home Page (Landing Page):
+
+Centered big title: "What's for Lunch".
+
+Below it, a large, attractive "Get Started" button that smoothly transitions the user to the meal categories page (could be a scroll, a fade, or a page navigation).
+
+Background could have a soft gradient or light texture that feels inviting and food-themed.
+
+Main Page (Categories):
+
+Display three main category cards/buttons:
+
+Breakfast
+
+Lunch
+
+Dinner
+
+Each card should have a food-themed icon or small image and nice hover effects (e.g., card lift, slight zoom, soft glow).
+
+Meal List Page (after clicking a category):
+
+Show a list/grid of meals for the selected category.
+
+Each meal card includes:
+
+Meal name
+
+Short description
+
+Nutritional facts (calories, protein, carbs, fats) inside a neat little table or styled list.
+
+Smooth animations as cards appear (e.g., fade-in, slide-up).
+
+Color Palette (Food-Themed):
+
+Tomato Red #E63946
+
+Avocado Green #A8D5BA
+
+Bread Beige #F5E1A4
+
+Chocolate Brown #5D3A00
+
+Soft white (#FFFFFF) background for Light Mode.
+
+Deep charcoal (#121212) background for Dark Mode.
+
+Responsive Design:
+
+Mobile-first approach.
+
+Cards should stack on mobile screens.
+
+Fluid typography (titles and text resize naturally on different screen sizes).
+
+Dark Mode and Light Mode:
+
+Allow users to toggle between dark and light modes (add a toggle button, maybe in the navbar or floating in the corner).
+
+Automatically switch colors for background, text, cards, and buttons based on the mode.
+
+Animations:
+
+Button hover effects (smooth color changes, slight scale-up).
+
+Card hover effects (lift up, subtle shadow).
+
+Smooth page transitions (like fade or slide effects when navigating).
+
+Use CSS animations or lightweight JS libraries like Framer Motion (if React) or simple Animate.css.
+
+🛠 Bonus (if you want to go extra):
+Add a search bar to quickly find meals.
+Add a filter/sort feature (sort by calories, protein, etc.).
+Smooth scroll between
+
+Add More Meals
+
+Add at least 20 meals per category (Breakfast, Lunch, Dinner).
+
+Each meal must include a name, short description, and full nutritional facts (calories, protein, carbs, fat).
+
+Dark Mode & Light Mode Animation
+
+When switching between dark mode and light mode, apply a smooth animated transition to background, text, header, footer, and card colors (e.g., using CSS transitions or keyframes).
+
+Meal Detail View
+
+When a meal card is clicked, open a detailed view showing:
+
+Meal name
+
+Ingredients list
+
+Full recipe (step-by-step cooking instructions)
+
+Animate the transition into the detail view (e.g., fade-in or slide-up).
+
+Add Footer
+
+Create a footer at the bottom of every page with the text and make it professional:
+
+"De Leon, Matnao, Mendoza All rights reserved. 2025"
+
+Footer background should match the active theme (light or dark).
+
+Update Branding
+
+Change all mentions of the website title to:
+
+"What's My Cravings?"
+
+Update the header and page title accordingly.
+
+Dark Mode Header/Footer Styling
+
+In dark mode, ensure the header and footer also use dark backgrounds and adjust text colors for readability.
