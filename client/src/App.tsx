@@ -1,4 +1,4 @@
-import { Switch, Route } from "wouter";
+import { Switch, Route, useLocation } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
@@ -10,12 +10,24 @@ import MealsPage from "@/pages/meals-page";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { MealDetailModal } from "@/components/meal-detail-modal";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Meal } from "@shared/schema";
+
+// Simple hook to scroll to top when location changes
+function useScrollToTop() {
+  const [location] = useLocation();
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+}
 
 function Router() {
   const [selectedMeal, setSelectedMeal] = useState<Meal | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  
+  // Use the scroll to top hook
+  useScrollToTop();
 
   const openMealModal = (meal: Meal) => {
     setSelectedMeal(meal);
@@ -32,7 +44,7 @@ function Router() {
             {() => <CategoriesPage />}
           </Route>
           <Route path="/meals/:category">
-            {(params) => (
+            {(params: { category: string }) => (
               <MealsPage 
                 category={params.category} 
                 openMealModal={openMealModal}
