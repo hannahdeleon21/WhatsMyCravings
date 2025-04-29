@@ -81,12 +81,31 @@ export const MealDetailModal: React.FC<MealDetailModalProps> = ({
                   className="w-full h-64 lg:h-80" 
                 />
                 <div className="absolute top-4 right-4 flex gap-2">
-                  <Button variant="outline" size="icon" className="bg-white/80 hover:bg-white dark:bg-gray-900/80 dark:hover:bg-gray-900 h-8 w-8 rounded-full">
-                    <Bookmark className="h-4 w-4 text-tomato-red" />
-                  </Button>
-                  <Button variant="outline" size="icon" className="bg-white/80 hover:bg-white dark:bg-gray-900/80 dark:hover:bg-gray-900 h-8 w-8 rounded-full">
-                    <Share2 className="h-4 w-4 text-tomato-red" />
-                  </Button>
+                  <div className="relative">
+                    <Button 
+                      variant="outline"
+                      size="icon" 
+                      onClick={() => window.alert('Bookmark feature will be implemented soon!')}
+                      className="bg-white/80 hover:bg-white dark:bg-gray-900/80 dark:hover:bg-gray-900 h-8 w-8 rounded-full"
+                      title="Save this recipe"
+                    >
+                      <Bookmark className="h-4 w-4 text-tomato-red" />
+                    </Button>
+                  </div>
+                  <div className="relative">
+                    <Button 
+                      variant="outline" 
+                      size="icon" 
+                      onClick={() => {
+                        navigator.clipboard.writeText(`Check out this ${meal.name} recipe on What's My Cravings!`);
+                        window.alert('Recipe link copied to clipboard!');
+                      }}
+                      className="bg-white/80 hover:bg-white dark:bg-gray-900/80 dark:hover:bg-gray-900 h-8 w-8 rounded-full"
+                      title="Share this recipe"
+                    >
+                      <Share2 className="h-4 w-4 text-tomato-red" />
+                    </Button>
+                  </div>
                 </div>
               </div>
               

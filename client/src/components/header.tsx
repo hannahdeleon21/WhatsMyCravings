@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useLocation } from "wouter";
 import { ThemeToggle } from "./ui/theme-toggle";
-import { Home, Book, Menu } from "lucide-react";
+import { Home, Book, UtensilsCrossed } from "lucide-react";
 
 const Header: React.FC = () => {
   const [location] = useLocation();
@@ -12,7 +12,6 @@ const Header: React.FC = () => {
         <div className="flex items-center space-x-2">
           <Link href="/">
             <span className="text-2xl font-bold text-tomato-red font-poppins cursor-pointer flex items-center">
-              <Menu className="mr-2 h-6 w-6" />
               What's My Cravings?
             </span>
           </Link>
@@ -28,7 +27,7 @@ const Header: React.FC = () => {
             </Link>
             <Link href="/categories">
               <span className={`flex items-center cursor-pointer ${location === '/categories' ? 'text-tomato-red font-semibold' : 'text-gray-600 dark:text-gray-300 hover:text-tomato-red dark:hover:text-tomato-red'}`}>
-                <Book className="mr-1 h-4 w-4" />
+                <UtensilsCrossed className="mr-1 h-4 w-4" />
                 Menu
               </span>
             </Link>

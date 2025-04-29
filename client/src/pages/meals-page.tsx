@@ -180,10 +180,10 @@ const MealsPage: React.FC<MealsPageProps> = ({ category, openMealModal }) => {
           
           {showFilters && (
             <motion.div 
-              className="bg-white dark:bg-gray-800 p-4 rounded-lg mb-4 shadow-sm"
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
+              className="bg-white dark:bg-gray-800 p-4 rounded-lg mb-4 shadow-sm overflow-visible"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
             >
               <h3 className="font-medium mb-4 flex items-center">
@@ -214,7 +214,10 @@ const MealsPage: React.FC<MealsPageProps> = ({ category, openMealModal }) => {
                 
                 <div>
                   <div className="flex justify-between items-center mb-2">
-                    <label className="text-sm">Protein (g)</label>
+                    <label className="text-sm flex items-center">
+                      <div className="h-4 w-4 mr-1 bg-avocado-green rounded-full"></div>
+                      Protein (g)
+                    </label>
                     <Badge variant="outline" className="font-mono text-xs">
                       {proteinRange[0]} - {proteinRange[1]}
                     </Badge>
@@ -231,7 +234,10 @@ const MealsPage: React.FC<MealsPageProps> = ({ category, openMealModal }) => {
                 
                 <div>
                   <div className="flex justify-between items-center mb-2">
-                    <label className="text-sm">Carbs (g)</label>
+                    <label className="text-sm flex items-center">
+                      <div className="h-4 w-4 mr-1 bg-bread-beige rounded-full"></div>
+                      Carbs (g)
+                    </label>
                     <Badge variant="outline" className="font-mono text-xs">
                       {carbsRange[0]} - {carbsRange[1]}
                     </Badge>
