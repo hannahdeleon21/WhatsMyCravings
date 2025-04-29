@@ -10,10 +10,12 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const publicDir = path.resolve(__dirname, './public');
 const distDir = path.resolve(__dirname, './dist/public');
+const clientDir = path.resolve(__dirname, './client'); // Add client directory for Render.com
 
 console.log('Starting post-build process for Render.com deployment...');
 console.log(`Public directory: ${publicDir}`);
 console.log(`Dist directory: ${distDir}`);
+console.log(`Client directory: ${clientDir}`);
 
 // Ensure the dist directory exists
 if (!fs.existsSync(distDir)) {
@@ -66,6 +68,64 @@ if (fs.existsSync(mealImagesSource)) {
   copyDirectory(mealImagesSource, mealImagesDest);
 }
 
+// ==== RENDER.COM CLIENT DIRECTORY SETUP ====
+// For Render.com deployment, we need to set up the client directory as the public directory
+console.log('\nPreparing client directory for Render.com deployment...');
+
+// Create a render-assets directory in client if it doesn't exist
+const clientAssetsDir = path.join(clientDir, 'render-assets');
+if (!fs.existsSync(clientAssetsDir)) {
+  console.log('Creating client/render-assets directory...');
+  fs.mkdirSync(clientAssetsDir, { recursive: true });
+}
+
+// Copy important public files to client/render-assets
+console.log('Copying public files to client/render-assets...');
+const publicFiles = ['debug.html', 'render-index.html', 'download.html'];
+for (const file of publicFiles) {
+  const sourcePath = path.join(publicDir, file);
+  const destPath = path.join(clientAssetsDir, file);
+  if (fs.existsSync(sourcePath)) {
+    fs.copyFileSync(sourcePath, destPath);
+    console.log(`Copied: ${sourcePath} → ${destPath}`);
+  }
+}
+
+// Create a special index.html file for client directory
+console.log('Setting up special index.html for client directory...');
+const clientIndexPath = path.join(clientDir, 'index.html');
+const clientIndexContentOriginal = fs.readFileSync(path.join(clientDir, 'index.html'), 'utf8');
+
+// Create a backup of the original client/index.html
+fs.writeFileSync(path.join(clientDir, 'index.html.original'), clientIndexContentOriginal);
+
+// Copy the built index.html to client directory
+if (fs.existsSync(indexPath)) {
+  fs.copyFileSync(indexPath, clientIndexPath);
+  console.log(`Copied built index.html to client directory: ${indexPath} → ${clientIndexPath}`);
+}
+
+// Copy assets from dist/public to client directory
+console.log('Copying built assets to client directory...');
+const distAssetsDir = path.join(distDir, 'assets');
+const clientBuiltAssetsDir = path.join(clientDir, 'assets');
+
+if (fs.existsSync(distAssetsDir)) {
+  if (!fs.existsSync(clientBuiltAssetsDir)) {
+    fs.mkdirSync(clientBuiltAssetsDir, { recursive: true });
+  }
+  copyDirectory(distAssetsDir, clientBuiltAssetsDir);
+}
+
+// Copy meal images to client directory if they exist
+if (fs.existsSync(mealImagesSource)) {
+  const clientMealImagesDir = path.join(clientDir, 'meal-images');
+  if (!fs.existsSync(clientMealImagesDir)) {
+    fs.mkdirSync(clientMealImagesDir, { recursive: true });
+  }
+  copyDirectory(mealImagesSource, clientMealImagesDir);
+}
+
 // Verify copied files
 console.log('\nVerifying copied files:');
 function listFiles(dir, prefix = '') {
@@ -88,4 +148,8 @@ function listFiles(dir, prefix = '') {
 console.log('\nFiles in dist/public:');
 listFiles(distDir);
 
+console.log('\nFiles in client directory:');
+listFiles(clientDir);
+
+console.log('\nIMPORTANT: On Render.com, set client as your public directory!');
 console.log('\nPost-build process completed successfully!');

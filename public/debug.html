@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Debug Page - What's My Cravings</title>
+    <title>Debug Page - What's My Cravings (Render.com)</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -32,6 +32,12 @@
         h2 {
             color: #2d3748;
             margin-top: 30px;
+        }
+        h3 {
+            color: #4a5568;
+            margin-top: 20px;
+            border-top: 1px solid #eee;
+            padding-top: 10px;
         }
         code {
             background-color: #f1f1f1;
@@ -63,11 +69,70 @@
             margin: 10px;
             border: 1px solid #ddd;
         }
+        .diagnostic-line {
+            padding: 5px 10px;
+            margin: 5px 0;
+            border-radius: 4px;
+        }
+        .diagnostic-line.success {
+            background-color: #f0fff4;
+            color: #2f855a;
+            border-left: 4px solid #48bb78;
+        }
+        .diagnostic-line.error {
+            background-color: #fff5f5;
+            color: #c53030;
+            border-left: 4px solid #e53e3e;
+        }
+        .diagnostic-line.warning {
+            background-color: #fffaf0;
+            color: #c05621;
+            border-left: 4px solid #ed8936;
+        }
+        .diagnostic-line.info {
+            background-color: #ebf8ff;
+            color: #2c5282;
+            border-left: 4px solid #4299e1;
+        }
+        .test-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .test-link {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: #e2e8f0;
+            color: #2d3748;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+        .test-link:hover {
+            background-color: #cbd5e0;
+        }
+        .render-note {
+            background-color: #fefcbf;
+            border-left: 4px solid #d69e2e;
+            padding: 10px 15px;
+            margin: 20px 0;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>What's My Cravings - Debug Page</h1>
+        <h1>What's My Cravings - Debug Page (Render.com)</h1>
+        
+        <p class="render-note">This is a specialized debug page for diagnosing Render.com deployment issues. Use this to troubleshoot problems with your deployment.</p>
+        
+        <div class="info-section">
+            <h2>Render.com Deployment Diagnostics</h2>
+            <div id="diagnostics">
+                <!-- Diagnostic information will be inserted here by the render.js script -->
+            </div>
+        </div>
         
         <div class="info-section">
             <h2>Environment Info</h2>
@@ -98,8 +163,23 @@
             <h2>Browser Info</h2>
             <pre id="browserInfo"></pre>
         </div>
+        
+        <div class="info-section">
+            <h2>Deployment Instructions</h2>
+            <p>When deploying to Render.com, make sure to:</p>
+            <ol>
+                <li>Set the <strong>Build Command</strong> to: <code>./render-build.sh</code></li>
+                <li>Set the <strong>Start Command</strong> to: <code>node dist/index.js</code></li>
+                <li>Set the <strong>Public Directory</strong> to: <code>client</code></li>
+                <li>Set <code>NODE_ENV=production</code> in the Environment Variables</li>
+            </ol>
+            <p>If you're still seeing issues, please check the <a href="/DEPLOYMENT.md" target="_blank">DEPLOYMENT.md</a> file for more detailed instructions.</p>
+        </div>
     </div>
 
+    <!-- Include the specialized render.js script for diagnostic checks -->
+    <script src="/render.js"></script>
+    
     <script>
         // Environment info
         document.getElementById('envInfo').innerHTML = `
@@ -124,7 +204,7 @@
         // Test loading images
         const assetTest = document.getElementById('assetTest');
         const testImages = [
-            '/meal-images/american_pancakes.jpg',
+            '/meal-images/breakfast/pancakes.jpg',
             '/breakfast.jpg',
             '/lunch.jpg',
             '/dinner.jpg'
