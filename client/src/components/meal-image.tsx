@@ -13,43 +13,42 @@ const MealImage: React.FC<MealImageProps> = ({ mealName, category = "meal", clas
     // Convert to lowercase and replace spaces with hyphens
     const formattedName = name.toLowerCase().replace(/\s+/g, '-');
     
-    // For more specific, consistent and higher quality images
-    // Adding more specific keywords for food searches
-    const specificFoodTerms = {
+    // Map of meal names to image files in public/meal-images folder
+    const mealImageMap: {[key: string]: string} = {
       // Breakfast items
-      "avocado toast": "avocado-toast-healthy-breakfast",
-      "french toast": "french-toast-maple-syrup",
-      "pancakes": "pancakes-maple-syrup-breakfast",
-      "omelette": "cheese-mushroom-omelette",
-      "smoothie bowl": "acai-smoothie-bowl-berries",
-      "breakfast burrito": "breakfast-burrito-eggs-bacon",
+      "avocado toast": "avocado-toast.jpg",
+      "french toast": "french-toast.jpg",
+      "pancakes": "pancakes.jpg",
+      "omelette": "omelette.jpg",
+      "smoothie bowl": "smoothie-bowl.jpg",
+      "breakfast burrito": "breakfast-burrito.jpg",
       
       // Lunch items
-      "caesar salad": "caesar-salad-chicken-parmesan",
-      "quinoa salad": "quinoa-vegetable-salad-healthy",
-      "sandwich": "turkey-avocado-sandwich-lunch",
-      "sushi": "salmon-avocado-sushi-rolls",
-      "pasta salad": "italian-pasta-salad-vegetables",
-      "soup": "vegetable-soup-homemade",
+      "caesar salad": "caesar-salad.jpg",
+      "quinoa salad": "quinoa-salad.jpg",
+      "sandwich": "sandwich.jpg",
+      "sushi": "sushi.jpg",
+      "pasta salad": "pasta-salad.jpg",
+      "soup": "vegetable-soup.jpg",
       
       // Dinner items
-      "salmon": "grilled-salmon-asparagus-lemon",
-      "steak": "medium-rare-steak-rosemary",
-      "chicken curry": "indian-chicken-curry-spicy",
-      "pasta": "italian-pasta-tomato-sauce",
-      "pizza": "homemade-margherita-pizza",
-      "burger": "gourmet-beef-burger-fries"
+      "salmon": "grilled-salmon.jpg",
+      "steak": "steak.jpg",
+      "chicken curry": "chicken-curry.jpg",
+      "pasta": "pasta.jpg",
+      "pizza": "pizza.jpg",
+      "burger": "burger.jpg"
     };
     
-    // Loop through our specific keywords and check if any match our meal name
-    for (const [foodKey, searchTerm] of Object.entries(specificFoodTerms)) {
+    // Loop through our meal map and check if any match our meal name
+    for (const [foodKey, imageName] of Object.entries(mealImageMap)) {
       if (name.toLowerCase().includes(foodKey)) {
-        return `https://source.unsplash.com/featured/?${searchTerm}`;
+        return `/meal-images/${imageName}`;
       }
     }
     
-    // Default search if no specific keywords match
-    return `https://source.unsplash.com/featured/?${formattedName},${cat},food,recipe,meal`;
+    // Default category image if no specific keywords match
+    return `/meal-images/${cat}-default.jpg`;
   };
 
   // Generate a consistent fallback color based on the meal name (for loading/error states)
