@@ -5,6 +5,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Coffee, UtensilsCrossed, ChefHat, ArrowRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
+// Import static images
+import breakfastImg from "../assets/breakfast.jpg";
+import lunchImg from "../assets/lunch.jpg";
+import dinnerImg from "../assets/dinner.jpg";
+
 const CategoryCard: React.FC<{
   title: string;
   description: string;
@@ -31,10 +36,10 @@ const CategoryCard: React.FC<{
           <div className={`h-52 flex items-center justify-center ${bgColor} relative overflow-hidden`}>
             <div className="absolute inset-0 bg-gradient-to-br from-transparent to-black/30"></div>
             
-            {/* Real food images from the attached assets */}
+            {/* Real food images from the imported assets */}
             <div className="absolute inset-0 w-full h-full">
               <img 
-                src={`/${category}.jpg`}
+                src={category === 'breakfast' ? breakfastImg : category === 'lunch' ? lunchImg : dinnerImg}
                 alt={title}
                 className="w-full h-full object-cover"
               />

@@ -1,5 +1,28 @@
 import React from 'react';
 
+// Import all static meal images
+import avocadoToastImg from '../assets/avocado-toast.jpg';
+import frenchToastImg from '../assets/french-toast.jpg';
+import pancakesImg from '../assets/pancakes.jpg';
+import omeletteImg from '../assets/omelette.jpg';
+import smoothieBowlImg from '../assets/smoothie-bowl.jpg';
+import breakfastBurritoImg from '../assets/breakfast-burrito.jpg';
+import caesarSaladImg from '../assets/caesar-salad.jpg';
+import quinoaSaladImg from '../assets/quinoa-salad.jpg';
+import sandwichImg from '../assets/sandwich.jpg';
+import sushiImg from '../assets/sushi.jpg';
+import pastaSaladImg from '../assets/pasta-salad.jpg';
+import soupImg from '../assets/vegetable-soup.jpg';
+import salmonImg from '../assets/grilled-salmon.jpg';
+import steakImg from '../assets/steak.jpg';
+import chickenCurryImg from '../assets/chicken-curry.jpg';
+import pastaImg from '../assets/pasta.jpg';
+import pizzaImg from '../assets/pizza.jpg';
+import burgerImg from '../assets/burger.jpg';
+import breakfastDefaultImg from '../assets/breakfast-default.jpg';
+import lunchDefaultImg from '../assets/lunch-default.jpg';
+import dinnerDefaultImg from '../assets/dinner-default.jpg';
+
 type MealImageProps = {
   mealName: string;
   category?: string;
@@ -10,45 +33,52 @@ type MealImageProps = {
 const MealImage: React.FC<MealImageProps> = ({ mealName, category = "meal", className = "" }) => {
   // Function to get a specific, consistent image for each meal
   const getMealImageUrl = (name: string, cat: string): string => {
-    // Convert to lowercase and replace spaces with hyphens
-    const formattedName = name.toLowerCase().replace(/\s+/g, '-');
+    // Convert to lowercase for matching
+    const lowerName = name.toLowerCase();
     
-    // Map of meal names to image files in public/meal-images folder
-    const mealImageMap: {[key: string]: string} = {
-      // Breakfast items
-      "avocado toast": "avocado-toast.jpg",
-      "french toast": "french-toast.jpg",
-      "pancakes": "pancakes.jpg",
-      "omelette": "omelette.jpg",
-      "smoothie bowl": "smoothie-bowl.jpg",
-      "breakfast burrito": "breakfast-burrito.jpg",
-      
-      // Lunch items
-      "caesar salad": "caesar-salad.jpg",
-      "quinoa salad": "quinoa-salad.jpg",
-      "sandwich": "sandwich.jpg",
-      "sushi": "sushi.jpg",
-      "pasta salad": "pasta-salad.jpg",
-      "soup": "vegetable-soup.jpg",
-      
-      // Dinner items
-      "salmon": "grilled-salmon.jpg",
-      "steak": "steak.jpg",
-      "chicken curry": "chicken-curry.jpg",
-      "pasta": "pasta.jpg",
-      "pizza": "pizza.jpg",
-      "burger": "burger.jpg"
-    };
-    
-    // Loop through our meal map and check if any match our meal name
-    for (const [foodKey, imageName] of Object.entries(mealImageMap)) {
-      if (name.toLowerCase().includes(foodKey)) {
-        return `/meal-images/${imageName}`;
-      }
+    // Map of meal names to imported image files
+    if (lowerName.includes('avocado toast')) {
+      return avocadoToastImg;
+    } else if (lowerName.includes('french toast')) {
+      return frenchToastImg;
+    } else if (lowerName.includes('pancakes')) {
+      return pancakesImg;
+    } else if (lowerName.includes('omelette')) {
+      return omeletteImg;
+    } else if (lowerName.includes('smoothie bowl')) {
+      return smoothieBowlImg;
+    } else if (lowerName.includes('breakfast burrito')) {
+      return breakfastBurritoImg;
+    } else if (lowerName.includes('caesar salad')) {
+      return caesarSaladImg;
+    } else if (lowerName.includes('quinoa salad')) {
+      return quinoaSaladImg;
+    } else if (lowerName.includes('sandwich')) {
+      return sandwichImg;
+    } else if (lowerName.includes('sushi')) {
+      return sushiImg;
+    } else if (lowerName.includes('pasta salad')) {
+      return pastaSaladImg;
+    } else if (lowerName.includes('soup')) {
+      return soupImg;
+    } else if (lowerName.includes('salmon')) {
+      return salmonImg;
+    } else if (lowerName.includes('steak')) {
+      return steakImg;
+    } else if (lowerName.includes('chicken curry')) {
+      return chickenCurryImg;
+    } else if (lowerName.includes('pasta')) {
+      return pastaImg;
+    } else if (lowerName.includes('pizza')) {
+      return pizzaImg;
+    } else if (lowerName.includes('burger')) {
+      return burgerImg;
     }
     
     // Default category image if no specific keywords match
-    return `/meal-images/${cat}-default.jpg`;
+    if (cat === 'breakfast') return breakfastDefaultImg;
+    if (cat === 'lunch') return lunchDefaultImg;
+    return dinnerDefaultImg;
   };
 
   // Generate a consistent fallback color based on the meal name (for loading/error states)
