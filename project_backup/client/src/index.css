@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 20 14.3% 4.1%;
+    --muted: 60 4.8% 95.9%;
+    --muted-foreground: 25 5.3% 44.7%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 14.3% 4.1%;
+    --card: 0 0% 100%;
+    --card-foreground: 20 14.3% 4.1%;
+    --border: 20 5.9% 90%;
+    --input: 20 5.9% 90%;
+    --primary: 350 83.3% 57.8%; /* Tomato Red: #E63946 */
+    --primary-foreground: 210 40% 98%;
+    --secondary: 140 38.5% 74.9%; /* Avocado Green: #A8D5BA */
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --accent: 48 82.8% 80%; /* Bread Beige: #F5E1A4 */
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.5rem;
+    
+    /* Food-themed colors */
+    --tomato-red: 350 83.3% 57.8%; /* #E63946 */
+    --avocado-green: 140 38.5% 74.9%; /* #A8D5BA */
+    --bread-beige: 48 82.8% 80%; /* #F5E1A4 */
+    --chocolate-brown: 30 100% 18%; /* #5D3A00 */
+  }
+
+  .dark {
+    --background: 240 10% 3.9%; /* Dark Charcoal: #121212 */
+    --foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --primary: 350 83.3% 57.8%; /* Tomato Red: #E63946 */
+    --primary-foreground: 210 40% 98%;
+    --secondary: 140 38.5% 74.9%; /* Avocado Green: #A8D5BA */
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --accent: 48 82.8% 80%; /* Bread Beige: #F5E1A4 */
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --ring: 240 4.9% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground transition-colors duration-500;
+  }
+
+  /* Animations */
+  .animate-fade-in {
+    @apply animate-in fade-in duration-500;
+  }
+
+  .animate-slide-up {
+    @apply animate-in slide-in-from-bottom-8 duration-500;
+  }
+
+  .animate-scale {
+    @apply hover:scale-105 transition-transform duration-300;
+  }
+
+  .animate-card-lift {
+    @apply transition-transform duration-300 hover:-translate-y-2;
+  }
+
+  /* Staggered children animation */
+  .stagger-children > * {
+    @apply opacity-0;
+    animation: staggerFadeIn 0.5s ease forwards;
+  }
+
+  .stagger-children > *:nth-child(1) { animation-delay: 0.1s; }
+  .stagger-children > *:nth-child(2) { animation-delay: 0.2s; }
+  .stagger-children > *:nth-child(3) { animation-delay: 0.3s; }
+  .stagger-children > *:nth-child(4) { animation-delay: 0.4s; }
+  .stagger-children > *:nth-child(5) { animation-delay: 0.5s; }
+}
+
+@keyframes staggerFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
