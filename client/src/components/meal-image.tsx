@@ -6,9 +6,19 @@ type MealImageProps = {
   className?: string;
 };
 
-// This component creates a consistent placeholder image based on the meal name
+// This component displays real food images based on the meal name
 const MealImage: React.FC<MealImageProps> = ({ mealName, category = "meal", className = "" }) => {
-  // Generate a consistent color based on the meal name
+  // Simplified function to convert meal name to an image URL-friendly format
+  const getMealImageUrl = (name: string, cat: string): string => {
+    // Convert to lowercase and replace spaces with hyphens
+    const formattedName = name.toLowerCase().replace(/\s+/g, '-');
+    
+    // Use Unsplash API to get consistent, high-quality food images
+    // We'll use the search feature with the meal name and category
+    return `https://source.unsplash.com/featured/?${formattedName},${cat},food`;
+  };
+
+  // Generate a consistent fallback color based on the meal name (for loading/error states)
   const getColorFromString = (str: string): string => {
     let hash = 0;
     for (let i = 0; i < str.length; i++) {
@@ -28,7 +38,7 @@ const MealImage: React.FC<MealImageProps> = ({ mealName, category = "meal", clas
     return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
   };
 
-  // Get first letter of each word of the meal name
+  // Get first letter of each word of the meal name for fallback display
   const getInitials = (name: string): string => {
     return name
       .split(' ')
@@ -40,19 +50,31 @@ const MealImage: React.FC<MealImageProps> = ({ mealName, category = "meal", clas
 
   const bgColor = getColorFromString(mealName);
   const initials = getInitials(mealName);
+  const imageUrl = getMealImageUrl(mealName, category);
 
   return (
     <div 
       className={`relative overflow-hidden rounded-lg ${className}`}
-      style={{ 
-        backgroundColor: bgColor,
-        backgroundImage: `radial-gradient(circle at 30% 70%, rgba(255,255,255,0.2), transparent 40%), 
-                           radial-gradient(circle at 70% 30%, rgba(255,255,255,0.2), transparent 25%)`
-      }}
+      style={{ backgroundColor: bgColor }}
     >
+      {/* Real image with fallback */}
+      <img 
+        src={imageUrl}
+        alt={`${mealName} - ${category}`}
+        className="absolute inset-0 w-full h-full object-cover"
+        onError={(e) => {
+          // If image fails to load, show the gradient background
+          const target = e.target as HTMLImageElement;
+          target.style.display = 'none';
+        }}
+      />
+      
+      {/* Fallback content shown if image fails to load */}
       <div className="absolute inset-0 flex items-center justify-center text-white font-bold text-4xl opacity-30">
         {initials}
       </div>
+      
+      {/* Gradient overlay for better text visibility */}
       <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-black/70 to-transparent"></div>
     </div>
   );
