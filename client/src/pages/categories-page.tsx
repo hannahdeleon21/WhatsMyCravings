@@ -25,11 +25,24 @@ const CategoryCard: React.FC<{
       <Link href={`/meals/${category}`}>
         <Card className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition-all duration-300 h-full border-t-4 border-t-tomato-red">
           <div className={`h-52 flex items-center justify-center ${bgColor} relative overflow-hidden`}>
-            <div className="absolute inset-0 bg-gradient-to-br from-transparent to-black/20"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-transparent to-black/30"></div>
+            
+            {/* Real food images */}
+            <div className="absolute inset-0 w-full h-full opacity-80">
+              <img 
+                src={`https://source.unsplash.com/featured/?${category},food`}
+                alt={title}
+                className="w-full h-full object-cover"
+              />
+            </div>
+            
+            {/* Dark gradient overlay for better icon visibility */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+            
             <div className="relative z-10">
               {icon}
             </div>
-            <Badge className="absolute top-4 right-4 bg-white/90 text-gray-800 hover:bg-white/90">
+            <Badge className="absolute top-4 right-4 bg-white/90 text-gray-800 hover:bg-white/90 z-20">
               {mealCount} meals
             </Badge>
           </div>
@@ -52,7 +65,7 @@ const CategoriesPage: React.FC = () => {
     {
       title: "Breakfast",
       description: "Start your day right with nutritious and delicious breakfast options.",
-      icon: <Coffee className="h-28 w-28 text-chocolate-brown drop-shadow-lg" />,
+      icon: <Coffee className="h-28 w-28 text-white drop-shadow-xl bg-bread-beige/60 p-6 rounded-full" />,
       bgColor: "bg-bread-beige",
       textColor: "text-chocolate-brown",
       category: "breakfast",
@@ -61,18 +74,18 @@ const CategoriesPage: React.FC = () => {
     {
       title: "Lunch",
       description: "Perfect midday meals to keep you energized throughout the day.",
-      icon: <UtensilsCrossed className="h-28 w-28 text-white drop-shadow-lg" />,
+      icon: <UtensilsCrossed className="h-28 w-28 text-white drop-shadow-xl bg-avocado-green/60 p-6 rounded-full" />,
       bgColor: "bg-avocado-green",
-      textColor: "text-avocado-green",
+      textColor: "text-gray-900 dark:text-avocado-green",
       category: "lunch",
       mealCount: 15,
     },
     {
       title: "Dinner",
       description: "End your day with satisfying and flavorful dinner recipes.",
-      icon: <ChefHat className="h-28 w-28 text-white drop-shadow-lg" />,
+      icon: <ChefHat className="h-28 w-28 text-white drop-shadow-xl bg-tomato-red/60 p-6 rounded-full" />,
       bgColor: "bg-tomato-red",
-      textColor: "text-tomato-red",
+      textColor: "text-gray-900 dark:text-tomato-red",
       category: "dinner",
       mealCount: 12,
     },

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ChevronRight, Utensils, Coffee, Clock, MoonStar } from "lucide-react";
+import { ChevronRight, Utensils, Coffee, MoonStar } from "lucide-react";
 
 const LandingPage: React.FC = () => {
   return (
@@ -25,16 +25,16 @@ const LandingPage: React.FC = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
-          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-bread-beige text-chocolate-brown">
-            <Coffee className="mr-1 h-3 w-3" />
+          <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-bread-beige text-chocolate-brown shadow-sm">
+            <Coffee className="mr-2 h-4 w-4" />
             Breakfast
           </span>
-          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-avocado-green text-white">
-            <Clock className="mr-1 h-3 w-3" />
+          <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-avocado-green text-gray-900 shadow-sm font-semibold">
+            <Utensils className="mr-2 h-4 w-4" />
             Lunch
           </span>
-          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-tomato-red text-white">
-            <MoonStar className="mr-1 h-3 w-3" />
+          <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-tomato-red text-white shadow-sm">
+            <MoonStar className="mr-2 h-4 w-4" />
             Dinner
           </span>
         </motion.div>
