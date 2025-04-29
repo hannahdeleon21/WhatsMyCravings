@@ -14,6 +14,7 @@ This guide explains how to deploy the "What's My Cravings?" application to Rende
    - Environment: `Node`
    - Build Command: `./render-build.sh`
    - Start Command: `node dist/index.js`
+   - Public Directory: `client` (IMPORTANT: you must specify this)
    - Set the following environment variables:
      - `NODE_ENV`: `production`
      - `PORT`: `5000`
