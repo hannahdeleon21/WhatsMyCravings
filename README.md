@@ -20,6 +20,7 @@ A modern, interactive food discovery platform that helps users explore diverse m
 - **Build Tool**: Vite
 - **Backend**: Express.js with Node.js
 - **Database**: In-memory storage with typed schemas
+- **Deployment**: Compatible with Render.com (see [DEPLOYMENT.md](DEPLOYMENT.md))
 
 ## 📋 Installation
 
