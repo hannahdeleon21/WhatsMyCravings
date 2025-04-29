@@ -26,39 +26,78 @@ This guide explains how to deploy the "What's My Cravings?" application to Rende
    - Click "Create Web Service"
    - Render will begin deploying your application
 
-## Troubleshooting White Screen Issues
+## Fix for White Screen Issues
 
-If you're seeing a white screen after deployment, try these steps:
+If you're seeing a white screen after deployment:
 
-1. **Check Render Logs**:
-   - In your Render dashboard, select your web service
-   - Click on "Logs" to see what's happening during build and runtime
-   - Look for any errors related to file paths or missing assets
-
-2. **Verify Build Process**:
-   - Ensure the `render-build.sh` script is executable (`chmod +x render-build.sh`)
-   - Confirm public assets are being copied correctly
-
-3. **Manual Deployment Fix**:
-   If the issue persists:
+1. **Visit the Debug Page**:
+   First, try accessing the debug page to see if your assets are loading correctly:
+   ```
+   https://your-app-name.onrender.com/debug.html
+   ```
    
-   - Clone your repository locally
-   - Run the build process manually:
-     ```bash
-     npm ci
-     npm run build
-     mkdir -p ./dist/public
-     cp -r ./public/* ./dist/public/
-     ```
-   - Create a new zip of the entire project, including the dist directory
-   - Use Render's "Upload Files" option to directly upload the built files
+   This page will show if your images and other assets are loading correctly.
 
-4. **Browser Console Debugging**:
-   - Open your deployed site
-   - Open browser developer tools (F12 or right-click > Inspect)
-   - Check the Console tab for any JavaScript errors
-   - Check the Network tab to see if any assets are failing to load
+2. **Use the Static Fallback**:
+   We've included a static fallback page that should work even if the React app fails to load:
+   ```
+   https://your-app-name.onrender.com/render-index.html
+   ```
 
-## Customizing Build and Start Commands
+3. **Check for Common Issues**:
+   - **Browser Console**: Open browser developer tools (F12) and check the Console tab for errors
+   - **Network Tab**: Check if JS or CSS files are failing to load
+   - **Render Logs**: In your Render dashboard, check the logs for build or runtime errors
 
-If needed, you can adjust the build and start commands in the `render-build.sh` script and `render.yaml` file. These files are included in the project to simplify deployment.
+## Deployment Files
+
+This project includes several special files to help with Render.com deployment:
+
+- `render.yaml` - Defines your Render.com service configuration
+- `render-build.sh` - Custom build script for Render.com
+- `render-postbuild.js` - Ensures all assets are correctly copied during build
+- `public/debug.html` - Helps diagnose deployment issues
+- `public/render-index.html` - Static fallback page for when the main app fails to load
+
+## Manual Deployment Steps
+
+If you need to deploy manually:
+
+1. Clone your repository
+2. Install dependencies:
+   ```bash
+   npm ci
+   ```
+3. Build the application:
+   ```bash
+   npm run build
+   ```
+4. Run the post-build script:
+   ```bash
+   node render-postbuild.js
+   ```
+5. The complete built application will be in the `dist` directory
+
+## Testing Your Deployment
+
+After deploying, check these URLs to verify everything is working:
+
+1. Main Application:
+   ```
+   https://your-app-name.onrender.com/
+   ```
+
+2. Debug Page:
+   ```
+   https://your-app-name.onrender.com/debug.html
+   ```
+
+3. Static Fallback:
+   ```
+   https://your-app-name.onrender.com/render-index.html
+   ```
+
+4. Download Page:
+   ```
+   https://your-app-name.onrender.com/download.html
+   ```

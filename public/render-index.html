@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What's My Cravings?</title>
+    <style>
+        :root {
+            --background: #ffffff;
+            --foreground: #333333;
+            --primary: #e53e3e;
+            --primary-hover: #c53030;
+            --card: #f5f5f5;
+            --card-foreground: #333333;
+            --border: #e2e8f0;
+        }
+        
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --background: #1a1a1a;
+                --foreground: #f7fafc;
+                --primary: #e53e3e;
+                --primary-hover: #c53030;
+                --card: #2d3748;
+                --card-foreground: #f7fafc;
+                --border: #2d3748;
+            }
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background);
+            color: var(--foreground);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        header {
+            background-color: var(--background);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        main {
+            flex: 1;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        .hero {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            color: var(--foreground);
+        }
+        
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .category-card {
+            background-color: var(--card);
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .category-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .breakfast {
+            background-image: url('/breakfast.jpg');
+        }
+        
+        .lunch {
+            background-image: url('/lunch.jpg');
+        }
+        
+        .dinner {
+            background-image: url('/dinner.jpg');
+        }
+        
+        .category-content {
+            padding: 1.5rem;
+        }
+        
+        .category-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--foreground);
+        }
+        
+        .category-description {
+            color: var(--foreground);
+            opacity: 0.8;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.25rem;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-hover);
+        }
+        
+        footer {
+            background-color: var(--card);
+            color: var(--card-foreground);
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: auto;
+        }
+        
+        .controls {
+            margin-top: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .message {
+            background-color: var(--card);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--primary);
+        }
+
+        .debug-link {
+            color: var(--primary);
+            text-decoration: underline;
+            margin-left: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">What's My Cravings?</div>
+    </header>
+    
+    <main>
+        <div class="message">
+            <h2>Render.com Static Fallback Page</h2>
+            <p>This is a static fallback page that appears when the main React application hasn't loaded correctly.</p>
+            <p>If you're seeing this page, it means there may be an issue with the application's build or deployment.</p>
+            <p>Visit the <a href="/debug.html" class="debug-link">Debug Page</a> to help diagnose the issue.</p>
+        </div>
+
+        <div class="hero">
+            <h1>Discover Your Next Meal</h1>
+            <p>Explore a variety of delicious meals across breakfast, lunch, and dinner categories.</p>
+        </div>
+        
+        <div class="categories">
+            <div class="category-card">
+                <div class="category-image breakfast"></div>
+                <div class="category-content">
+                    <h2 class="category-title">Breakfast</h2>
+                    <p class="category-description">Start your day with these energizing breakfast options.</p>
+                </div>
+            </div>
+            
+            <div class="category-card">
+                <div class="category-image lunch"></div>
+                <div class="category-content">
+                    <h2 class="category-title">Lunch</h2>
+                    <p class="category-description">Refuel your day with these satisfying lunch choices.</p>
+                </div>
+            </div>
+            
+            <div class="category-card">
+                <div class="category-image dinner"></div>
+                <div class="category-content">
+                    <h2 class="category-title">Dinner</h2>
+                    <p class="category-description">End your day with these comforting dinner recipes.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <a href="/download.html" class="btn">Download Project</a>
+            <a href="/debug.html" class="btn">Debug Application</a>
+        </div>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 What's My Cravings? | A modern food discovery platform</p>
+    </footer>
+
+    <script>
+        // Simple script to log loading success
+        console.log('Static fallback page loaded successfully');
+        
+        // Check if images are loading correctly
+        const images = [
+            { url: '/breakfast.jpg', name: 'Breakfast Image' },
+            { url: '/lunch.jpg', name: 'Lunch Image' },
+            { url: '/dinner.jpg', name: 'Dinner Image' }
+        ];
+        
+        images.forEach(img => {
+            const testImage = new Image();
+            testImage.onload = () => console.log(`✅ Loaded: ${img.name}`);
+            testImage.onerror = () => console.error(`❌ Failed: ${img.name}`);
+            testImage.src = img.url;
+        });
+    </script>
+</body>
+</html>
