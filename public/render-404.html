@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="10;url=/" />
+    <title>Page Not Found - What's My Cravings?</title>
+    <style>
+        :root {
+            --background: #ffffff;
+            --foreground: #333333;
+            --primary: #e53e3e;
+            --primary-hover: #c53030;
+            --card: #f5f5f5;
+            --card-foreground: #333333;
+            --border: #e2e8f0;
+        }
+        
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --background: #1a1a1a;
+                --foreground: #f7fafc;
+                --primary: #e53e3e;
+                --primary-hover: #c53030;
+                --card: #2d3748;
+                --card-foreground: #f7fafc;
+                --border: #2d3748;
+            }
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background);
+            color: var(--foreground);
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .error-code {
+            font-size: 8rem;
+            font-weight: bold;
+            color: var(--primary);
+            opacity: 0.3;
+            margin: 0;
+            line-height: 1;
+        }
+        
+        .message-box {
+            background-color: var(--card);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.25rem;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+            border: none;
+            cursor: pointer;
+            margin: 0.5rem;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-hover);
+        }
+        
+        .countdown {
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .debug-section {
+            margin-top: 3rem;
+            padding: 1rem;
+            border-top: 1px solid var(--border);
+            font-size: 0.9rem;
+            color: var(--foreground);
+            opacity: 0.7;
+        }
+        
+        .debug-section h3 {
+            color: var(--primary);
+        }
+        
+        .help-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 2rem;
+            gap: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="error-code">404</div>
+        <h1>Page Not Found</h1>
+        
+        <div class="message-box">
+            <p>We couldn't find the page you were looking for. This could be due to:</p>
+            <ul style="text-align: left; display: inline-block;">
+                <li>A mistyped URL</li>
+                <li>A broken link</li>
+                <li>The page has been moved or deleted</li>
+                <li>A deployment issue with Render.com</li>
+            </ul>
+            <p>You will be redirected to the homepage in <span id="countdown" class="countdown">10</span> seconds.</p>
+        </div>
+        
+        <div class="help-links">
+            <a href="/" class="btn">Go to Homepage</a>
+            <a href="/debug.html" class="btn">Go to Debug Page</a>
+        </div>
+        
+        <div class="debug-section">
+            <h3>Technical Information (Render.com)</h3>
+            <p>If you're experiencing deployment issues on Render.com, make sure to:</p>
+            <ol style="text-align: left; display: inline-block;">
+                <li>Set Public Directory to <strong>main-app</strong> in your Render.com settings</li>
+                <li>Add the environment variable: <code>RENDER=true</code></li>
+                <li>Check the logs in your Render.com dashboard</li>
+                <li>Visit <a href="/debug.html">/debug.html</a> for more diagnostic information</li>
+            </ol>
+        </div>
+    </div>
+    
+    <script>
+        // Countdown timer
+        let seconds = 10;
+        const countdownElement = document.getElementById('countdown');
+        
+        const interval = setInterval(() => {
+            seconds--;
+            countdownElement.textContent = seconds;
+            
+            if (seconds <= 0) {
+                clearInterval(interval);
+                window.location.href = '/';
+            }
+        }, 1000);
+        
+        // Log page load for debugging
+        console.log('Render.com 404 page loaded');
+        
+        // Add current URL to the page for debugging
+        document.addEventListener('DOMContentLoaded', () => {
+            const debugSection = document.querySelector('.debug-section');
+            const urlInfo = document.createElement('p');
+            urlInfo.innerHTML = `Current URL: <code>${window.location.href}</code>`;
+            debugSection.appendChild(urlInfo);
+        });
+    </script>
+</body>
+</html>
