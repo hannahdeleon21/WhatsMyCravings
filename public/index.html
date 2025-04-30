@@ -1,14 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0;url=/download.html">
-    <title>Redirecting to Download Page...</title>
+    <meta http-equiv="refresh" content="0;url=/" />
+    <title>What's My Cravings?</title>
+    <script>
+        // Redirect to the main application
+        window.location.href = "/";
+    </script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background-color: #f5f5f7;
+        }
+        h1 {
+            color: #e53e3e;
+        }
+        p {
+            margin: 20px 0;
+        }
+        a {
+            color: #e53e3e;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-    <p>Redirecting to download page...</p>
-    <script>
-        window.location.href = "/download.html";
-    </script>
+    <h1>What's My Cravings?</h1>
+    <p>Redirecting to the main application...</p>
+    <p>If you are not redirected automatically, please <a href="/">click here</a> to go to the main page.</p>
 </body>
 </html>

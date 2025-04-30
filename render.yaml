@@ -4,9 +4,11 @@ services:
     env: node
     buildCommand: ./render-build.sh
     startCommand: node dist/index.js
-    staticPublishPath: ./client
+    staticPublishPath: ./main-app
     envVars:
       - key: NODE_ENV
         value: production
       - key: PORT
         value: 5000
+      - key: RENDER
+        value: true
