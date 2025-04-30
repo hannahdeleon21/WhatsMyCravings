@@ -1,6 +1,8 @@
 /**
  * This script is loaded by the debug.html page to help troubleshoot
  * deployment issues on Render.com
+ * 
+ * Modified to prevent redirect loops
  */
 
 document.addEventListener('DOMContentLoaded', function() {

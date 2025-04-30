@@ -45,14 +45,19 @@ const express = require('express');
 const router = express.Router();
 const path = require('path');
 
-// The main app should be served instead of the download page
-router.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../main-app/index.html'));
-});
-
-// Set the download page to be accessible via /download
+// Dedicated download page route
 router.get('/download', (req, res) => {
   res.sendFile(path.join(__dirname, '../main-app/download.html'));
+});
+
+// Debug page route
+router.get('/debug.html', (req, res) => {
+  res.sendFile(path.join(__dirname, '../main-app/debug.html'));
+});
+
+// 404 error page
+router.get('/404', (req, res) => {
+  res.sendFile(path.join(__dirname, '../main-app/render-404.html'));
 });
 
 module.exports = router;

@@ -8,19 +8,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Special route to handle the root path on Render.com
   // This ensures the main app is served instead of the download page
   app.get("/", (req, res, next) => {
-    // Check if this is a Render.com deployment
-    const isRender = process.env.RENDER || process.env.NODE_ENV === "production";
-    
-    if (isRender) {
-      // For Render.com deployments, ensure we serve the main app
-      const indexPath = path.resolve(process.cwd(), "client/index.html");
-      
-      if (fs.existsSync(indexPath)) {
-        return res.sendFile(indexPath);
-      }
-    }
-    
-    // If not on Render or can't find the file, continue to the next middleware
+    // Continue to the next middleware - we'll let vite middleware handle root path
     next();
   });
   
