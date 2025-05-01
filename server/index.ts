@@ -63,11 +63,8 @@ app.use((req, res, next) => {
   server.listen({
     port,
     host: "0.0.0.0",
-<<<<<<< HEAD
-  
-=======
->>>>>>> 0f249c7370fa75c54a9421d1fff99b64d360c80f
   }, () => {
     log(`serving on port ${port}`);
   });
-})();
+  })();
+  
