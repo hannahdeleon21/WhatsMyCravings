@@ -20,7 +20,7 @@ import pastaImg from '../assets/pasta.jpg';
 import pizzaImg from '../assets/pizza.jpg';
 import burgerImg from '../assets/burger.jpg';
 import breakfastDefaultImg from '../assets/breakfast-default.jpg';
-import lunchDefaultImg from '../assets/lunch-default.jpg';
+import lunchDefaultImg from "../assets/lunch-default.jpg"
 import dinnerDefaultImg from '../assets/dinner-default.jpg';
 
 type MealImageProps = {
