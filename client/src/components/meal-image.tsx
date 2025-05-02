@@ -20,8 +20,55 @@ import pastaImg from '../assets/pasta.jpg';
 import pizzaImg from '../assets/pizza.jpg';
 import burgerImg from '../assets/burger.jpg';
 import breakfastDefaultImg from '../assets/breakfast-default.jpg';
-import lunchDefaultImg from "../assets/lunch-default.jpg"
+import lunchDefaultImg from "../assets/lunch-default.jpg";
 import dinnerDefaultImg from '../assets/dinner-default.jpg';
+import potatoImg from '../assets/stuffed-sweet-potato.jpg';
+import oatmealImg from '../assets/apple-cinnamon-oatmeal.jpg';
+import breakfastbowlvegImg from '../assets/breakfast-bowl-with-roasted-veggies.jpg';
+import chiapuddingImg from '../assets/breakfast-chia-pudding.jpg';
+import breakfasthashImg from '../assets/breakfast-hash.jpg';
+import breakfastparfaitImg from '../assets/breakfast-parfait.jpg';
+import breakfastquesadillaImg from '../assets/breakfast-quesadilla.jpg';
+import breakfastquinoaImg from '../assets/breakfast-quinoa-bowl.jpg';
+import breakfastpeppersImg from '../assets/breakfast-stuffed-peppers.jpg';
+import eggandvegetableImg from '../assets/egg-and-vegetable-muffins.jpg';
+import greekyogurtImg from '../assets/greek-yogurt-bowl.jpg';
+import homemadegranolaImg from '../assets/homemade-granola.jpg';
+import overnightoatsImg from '../assets/overnight-oats.jpg';
+import nutbutterImg from '../assets/whole-grain-toast-with-nut-butter.jpg';
+import noodlesaladImg from '../assets/asian-noodle-salad.jpg';
+import burritobowlImg from '../assets/Black-Bean-and-Corn-Burrito-Bowl.jpg';
+import chickenwrapImg from '../assets/chicken-wrap.jpg';
+import chickpeaImg from '../assets/chickpea-and-vegetable-stir-fry.jpg';
+import eggsaladImg from '../assets/egg-salad-lettuce-wraps.jpg';
+import falafelpitaImg from '../assets/Falafel Pita.jpg';
+import paniniImg from '../assets/Grilled Vegetable Panini.jpg';
+import hummusImg from '../assets/Hummus and Vegetable Plate.jpg';
+import buddhabowlImg from '../assets/Lentil Buddha Bowl.jpg';
+import mezzeplateImg from '../assets/Mediterranean Mezze Plate.jpg';
+import tunasaladImg from '../assets/Mediterranean Tuna Salad.jpg';
+import quinoaImg from '../assets/Roasted Vegetable and Quinoa Salad.jpg';
+import mushroomImg from '../assets/Mushroom and Spinach Quesadilla.jpg';
+import shrimpImg from '../assets/Shrimp and Avocado Salad.jpg';
+import codImg from '../assets/Baked Cod with Herb Crust.jpg';
+import beefandbroccoliImg from '../assets/Beef and Broccoli Stir-Fry.jpg';
+import beefImg from '../assets/Beef Stir Fry.jpg';
+import veggiecurryImg from '../assets/Veggie Chickpea Curry.jpg';
+import turkeyImg from '../assets/Turkey Chili.jpg';
+import sweetandsourImg from '../assets/Sweet and Sour Tofu.jpg';
+import bellpeppersImg from '../assets/Stuffed Bell Peppers.jpg';
+import spinachImg from '../assets/Spinach and Ricotta Stuffed Shells.jpg';
+import coconutImg from '../assets/Coconut Curry Chicken.jpg';
+import eggplantImg from '../assets/Eggplant Parmesan.jpg';
+import greekImg from '../assets/Greek Stuffed Chicken.jpg';
+import herbImg from '../assets/Herb Roasted Chicken.jpg';
+import tilapiaImg from '../assets/Lemon Garlic Tilapia.jpg';
+import carbonaraImg from '../assets/Spaghetti Carbonara.jpg';
+import mushroomrisottoImg from '../assets/Mushroom Risotto.jpg';
+import pestoImg from '../assets/Pesto Baked Chicken.jpg';
+import porkImg from '../assets/Pork Tenderloin with Apple Chutney.jpg';
+import scampiImg from '../assets/Shrimp Scampi.jpg';
+
 
 type MealImageProps = {
   mealName: string;
@@ -53,6 +100,8 @@ const MealImage: React.FC<MealImageProps> = ({ mealName, category = "meal", clas
       return caesarSaladImg;
     } else if (lowerName.includes('quinoa salad')) {
       return quinoaSaladImg;
+    } else if (lowerName.includes('roasted vegetable')) {
+      return quinoaImg;
     } else if (lowerName.includes('sandwich')) {
       return sandwichImg;
     } else if (lowerName.includes('sushi')) {
@@ -73,8 +122,102 @@ const MealImage: React.FC<MealImageProps> = ({ mealName, category = "meal", clas
       return pizzaImg;
     } else if (lowerName.includes('burger')) {
       return burgerImg;
+    } else if (lowerName.includes('stuffed sweet potato')) {
+      return potatoImg;
+    } else if (lowerName.includes('apple cinnamon oatmeal')) {
+      return oatmealImg;
+    } else if (lowerName.includes('breakfast bowl with roasted vegetables')) {
+      return breakfastbowlvegImg;
+    } else if (lowerName.includes('breakfast chia pudding')) {
+        return chiapuddingImg;
+    } else if (lowerName.includes('breakfast hash')) {
+        return breakfasthashImg;
+    } else if (lowerName.includes('parfait')) {
+        return breakfastparfaitImg;
+    } else if (lowerName.includes('breakfast quinoa bowl')) {
+        return breakfastquinoaImg;
+    } else if (lowerName.includes('breakfast quesadilla')) {
+        return breakfastquesadillaImg;
+    } else if (lowerName.includes('breakfast stuffed peppers')) {
+        return breakfastpeppersImg;
+    } else if (lowerName.includes('egg and vegetable muffins')) {
+        return eggandvegetableImg;
+    } else if (lowerName.includes('greek yogurt bowl')) {
+        return greekyogurtImg;
+    } else if (lowerName.includes('homemade granola')) {
+        return homemadegranolaImg;
+    } else if (lowerName.includes('overnight oats')) {
+        return overnightoatsImg;
+    } else if (lowerName.includes('whole grain toast with nut butter')) {
+        return nutbutterImg;
+    } else if (lowerName.includes('asian noodle salad')) {
+        return noodlesaladImg;
+    } else if (lowerName.includes('black bean and corn burrito bowl')) {
+        return burritobowlImg;
+    } else if (lowerName.includes('chicken wrap')) {
+        return chickenwrapImg;
+    } else if (lowerName.includes('chickpea and vegetable stir-fry')) {
+        return chickpeaImg;
+    } else if (lowerName.includes('egg salad lettuce wraps')) {
+        return eggsaladImg;
+    } else if (lowerName.includes('falafel pita')) {
+        return falafelpitaImg;
+    } else if (lowerName.includes('mediterranean tuna salad')) {
+        return tunasaladImg;
+    } else if (lowerName.includes('grilled vegetable panini')) {
+        return paniniImg;
+    } else if (lowerName.includes('hummus and vegetable plate')) {
+        return hummusImg;
+    } else if (lowerName.includes('lentil buddha bowl')) {
+        return buddhabowlImg;
+    } else if (lowerName.includes('mediterranean mezze plate')) {
+        return mezzeplateImg;
+    } else if (lowerName.includes('mushroom and spinach quesadilla')) {
+        return mushroomImg;
+    } else if (lowerName.includes('shrimp and avocado salad')) {
+        return shrimpImg;
+    } else if (lowerName.includes('baked cod with herb crust')) {
+        return codImg;
+    } else if (lowerName.includes('beef and broccoli stir-fry')) {
+        return beefandbroccoliImg;
+    } else if (lowerName.includes('shrimp and avocado salad')) {
+        return shrimpImg;
+    } else if (lowerName.includes('beef stir fry')) {
+        return beefImg;
+    } else if (lowerName.includes('veggie chickpea curry')) {
+        return veggiecurryImg;
+    } else if (lowerName.includes('turkey chili')) {
+        return turkeyImg;
+    } else if (lowerName.includes('sweet and sour tofu')) {
+        return sweetandsourImg;
+    } else if (lowerName.includes('stuffed bell peppers')) {
+        return bellpeppersImg;
+    } else if (lowerName.includes('spinach and ricotta stuffed shells')) {
+        return spinachImg;
+    } else if (lowerName.includes('coconut curry chicken')) {
+        return coconutImg;
+    } else if (lowerName.includes('eggplant parmesan')) {
+        return eggplantImg;
+    } else if (lowerName.includes('greek stuffed chicken')) {
+        return greekImg;
+    } else if (lowerName.includes('herb roasted chicken')) {
+        return herbImg;
+    } else if (lowerName.includes('lemon garlic tilapia')) {
+        return tilapiaImg;
+    } else if (lowerName.includes('mushroom risotto')) {
+        return mushroomrisottoImg;
+    } else if (lowerName.includes('spaghetti carbonara')) {
+        return carbonaraImg;
+    } else if (lowerName.includes('pesto baked chicken')) {
+        return pestoImg;
+    } else if (lowerName.includes('Pork Tenderloin with Apple Chutney')) {
+        return porkImg;
+    } else if (lowerName.includes('shrimp scampi')) {
+        return scampiImg;
+
+      
     }
-    
+  
     // Default category image if no specific keywords match
     if (cat === 'breakfast') return breakfastDefaultImg;
     if (cat === 'lunch') return lunchDefaultImg;
